@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    {{>navbarstyle}}
+    <style>
+        .container {
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.TotalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.product {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.image {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    float: left;
+}
+
+.name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.description {
+    margin-bottom: 5px;
+}
+
+.category {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.quantity {
+    margin-top: 10px;
+}
+
+.increaseQuantity,
+.decreaseQuantity {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.increaseQuantity:hover,
+.decreaseQuantity:hover {
+    background-color: #0056b3;
+}
+.TotalPrice{
+    display: flex;
+    justify-content: center;
+}
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <div class="container">
+        
+        
+            {{#each cart as |c|}}
+            <div class="product">
+                <div class="image" style="background-image: url({{c.id.imageUrl}});"></div>
+            <div class="name">Name : {{c.id.name}}</div>
+            <div class="price">Price : {{c.id.price}}</div>
+            <div class="description">Description : {{c.id.description}}</div>
+            <div class="category">Category : {{c.id.category}}</div>
+            <div class="quantity">
+                <a href="/shop/cart/increase/{{c.id._id}}">
+                <button class="increaseQuantity">
+                    +
+                </button>
+                </a>{{c.quantity}}
+                <a href="/shop/cart/decrease/{{c.id._id}}">
+                <button class="decreaseQuantity">
+                    -
+                </button>
+                </a>
+                <div id={{c.id._id}}></div>
+            </div>
+          </div>
+            {{/each}}
+            <div class="TotalPrice">TotalPrice : {{totalPrice}}</div>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

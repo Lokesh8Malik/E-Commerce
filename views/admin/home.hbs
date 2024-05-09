@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>navbarstyle}}
+    <style>
+        .container{
+            width: 40%;
+            height: 100px;
+            margin: auto;
+            margin-top: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn{
+            font-size: large;
+            width: 75px;
+            height: 50px;
+            background-color: orange;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <h1>Welcome to Admin Page</h1>
+
+    <div class="container">
+        <a href="/admin/products/all">
+            <button class="btn">Get all Products</button>
+        </a>
+        <a href="/admin/products/add">
+            <button class="btn">Add new Product</button>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>navbarstyle}}
+    
+    <style>
+        .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.image {
+  width: 100%;
+  height: 300px; /* Set your desired height */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 18px;
+  color: #007bff; /* Blue color for price */
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.seller,
+.category {
+  font-size: 16px;
+  color: #6c757d; /* Gray color for seller and category */
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+    </style>
+</head>
+<body>
+    {{>navbar}}
+
+    <div class="container">
+        <div class="image" style="background-image: url({{product.imageUrl}});"></div>
+        <div class="name">Name : {{product.name}}</div>
+        <div class="price">Price : {{product.price}}</div>
+        <div class="description">Description : {{product.description}}</div>
+        <div class="seller">Seller : {{product.seller}}</div>
+        <div class="category">Category : {{product.category}}</div>
+        <h4>Reviews:</h4>
+        <ul>
+            {{#each product.review as |r|}}
+            <li>{{r}}</li>
+            {{/each}}
+        </ul>
+        <a href="/shop/cart/add/{{product._id}}">
+        <button type="button">Add to Cart</button>
+        </a>
+    </div>
+</body>
+</html>

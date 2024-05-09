@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>navbarstyle}}
+    {{>formstyling}}
+    <style>
+        .my-product-image{
+            width: 200px;
+            height: 250px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <h1> Welcome to Update Product Page </h1>
+
+    <div class="container">
+        <div class="my-product-image" style="background-image: url({{pro.imageUrl}});"></div>
+        <form action="/admin/products/update" method="POST">
+        <input type="hidden" name="id" value="{{pro._id}}">
+        <div class="cover">
+            <label for="name">Enter you name : </label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" value="{{pro.name}}">
+        </div>
+        <div class="cover">
+            <label for="price">Enter the price : </label>
+            <input id="price" name="price" type="text" placeholder="Enter the price" value="{{pro.price}}">
+        </div>
+        <div class="cover">
+            <label for="description">Enter the description : </label>
+            <input id="description" name="description" type="text" placeholder="Enter the description" value="{{pro.description}}">
+        </div>
+        <div class="cover">
+            <label for="seller">Enter the seller : </label>
+            <input id="seller" name="seller" type="text" placeholder="Enter the seller name" value="{{pro.seller}}">
+        </div>
+        <div class="cover">
+            <label for="imageUrl">Enter the image url : </label>
+            <input id="imageUrl" name="imageUrl" type="text" placeholder="Enter the image Url" value="{{pro.imageUrl}}">
+        </div>
+        <div class="cover">
+            <label for="category">Enter the category : </label>
+            <input id="category" name="category" type="text" placeholder="Enter the category" value="{{pro.category}}">
+        </div>
+
+        <button type="submit" class="addingbutton">Add</button>
+        </form>
+    </div>
+</body>
+</html>

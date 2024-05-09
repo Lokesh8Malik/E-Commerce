@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>navbarstyle}}
+    <style>
+        .category{
+            border: 4px solid red;
+            width: 100vw;
+            margin-top: 25px;
+            display: flex;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            column-gap: 10px;
+        }
+        .key{
+            width: 150px;
+            height: 250px;
+            font-size: xx-large;
+            vertical-align: middle;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 0, 140);
+            background-color: aquamarine;
+        }
+        .product-container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 20px;
+            column-gap: 50px;
+        }
+        .product-list{
+            width: 20%;
+        }
+        .image{
+            width: 100%;
+            height: 250px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+        .name,
+        .price,
+        .description{
+            width: 100%;
+            font-size: large;
+            display: flex;
+            justify-content: center;
+        }
+        .cartBtn,
+        .details{
+            width: 80px;
+            height: 50px;
+            font-size: larger;
+            background-color: aquamarine;
+        }
+        .btnGroup{
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    {{#each data as |category|}}
+    <div class="category">
+        <div class="key">{{@key}}</div>
+        <div class="product-container">
+            {{#each category as |p|}}
+                <div class="product-list">
+                    <div class="image" style="background-image: url('{{p.imageUrl}}');"></div>
+                    <div class="name">{{p.name}}</div>
+                    <div class="price">{{p.price}}</div>
+                    <div class="description">{{p.description}}</div>
+                    <div class="btnGroup">
+                        <a href="/shop/cart/add/{{p._id}}">
+                            <button class="cartBtn">Add to Cart</button>
+                        </a>
+                        <a href="/shop/products/{{p._id}}">
+                            <button class="details">Details</button>
+                        </a>
+                    </div>
+                </div>
+        {{/each}}
+        </div>
+        
+    </div>
+{{/each}}
+</body>
+</html>

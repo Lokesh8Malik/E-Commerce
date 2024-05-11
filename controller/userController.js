@@ -83,7 +83,7 @@ module.exports.getIncreaseQuantity = async(req,res)=>{
         }
     })
     cart[indx].quantity++;
-    req.user.save();
+    await req.user.save();
     try{
         let user = await Users.findById({_id : req.user._id}).populate('cart.id');
         let totalPrice = 0;
@@ -119,7 +119,7 @@ module.exports.getDecreaseQuantity = async(req,res)=>{
                 cart.splice(indx,1);
             }
         }
-            req.user.save();
+           await req.user.save();
             try{
                 let user = await Users.findById({_id : req.user._id}).populate('cart.id');
                 let totalPrice = 0;
